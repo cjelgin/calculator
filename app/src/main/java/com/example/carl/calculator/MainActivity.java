@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                curInput=curInput+"1";
+                calcDisplay.setText(curInput);
 
             }
         });
@@ -49,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                curInput=curInput+"2";
+                calcDisplay.setText(curInput);
 
             }
         });
@@ -57,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         three.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                curInput=curInput+"3";
+                calcDisplay.setText(curInput);
 
             }
         });
@@ -66,20 +72,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                curInput=curInput+"+";
+                calcDisplay.setText(curInput);
             }
         });
 
         //Action for equals
         equals.setOnClickListener(new View.OnClickListener() {
             @Override
+            //Action once the equals button is clicked
             public void onClick(View v) {
+                //Iterates through the input string to find integers
                 for(int i=0;i<curInput.length();i++){
-                    if(curInput[i].isInteger){
-                        sumInput=sumInput+curInput[i];
+                    if(Character.isDigit(curInput.charAt(i))){
+                        sumInput=sumInput+Character.getNumericValue(curInput.charAt(i));
                     }
-
                 }
-                calcDisplay.setText(curInput);
+                //Sets display value to the final sum
+                calcDisplay.setText(sumInput);
             }
         });
 
@@ -88,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 curInput="0";
+                calcDisplay.setText(curInput);
 
             }
         });
